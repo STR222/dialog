@@ -1,0 +1,35 @@
+#box{
+	width: 100%;
+	height:100%;
+	background: rgba(0,0,0,0.5);
+	position: fixed;
+	left: 50%;top: 50%;
+	transform: translate(-50%,-50%);
+}
+.mark{
+	position: relative;
+	width: 500px;
+	height: 200px;
+	background: skyblue;
+	margin:120px auto;
+	text-align: center;
+	line-height: 50px;
+	border-radius: 10px;
+}
+.mark button:last-child{
+	margin-left: 20px;
+}
+.close{
+	display: inline-block;
+	position: absolute;
+	right: -5px;
+	top: -5px;
+	z-index: 9999;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #fcc;
+	text-align: center;
+	line-height: 20px;
+	cursor: pointer;
+}

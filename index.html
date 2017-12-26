@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+	<button id="btn">点我</button>
+	<script>
+		var btn=document.getElementById("btn");
+		function dialog(obj){
+			this.obj=obj;
+			this.rander()
+			this.clear()
+			this.closes()
+			
+		}
+		dialog.prototype={
+			constructor:dialog,
+			rander:function(){
+				this.mark=document.createElement("div");
+				this.mark.className="mark";
+				this.mark.innerHTML=`<span class="close">&times;</span><h3>${this.obj.title}</h3><p>${this.obj.content}</p><p><button id="yesBtn">${this.obj.btns[0]}</button><button id="noBtn">${this.obj.btns[1]}</button></p>`;
+				this.box=document.createElement("div");
+				this.box.id="box";
+				this.box.appendChild(this.mark);
+				document.body.appendChild(this.box);
+			},
+			clear:function(){
+				var close=document.getElementsByClassName("close")[0];
+				var that=this;
+				close.onclick=function(){
+					document.body.removeChild(that.box);
+				}
+			},
+			closes:function(){
+				var yesBtn=document.getElementById("yesBtn");
+				var noBtn = document.getElementById("noBtn");
+				var that = this;
+				yesBtn.onclick=function(){
+					document.body.removeChild(that.box);
+				}
+				noBtn.onclick=function(){
+					document.body.removeChild(that.box);
+				}
+			}
+		}
+
+		btn.onclick=function(){
+			new dialog({
+				title:"I am a Dialog",
+				content:"元旦放假吗？",
+				btns:["当然放","学习吧"],
+				successCallback:function(){},
+				cancelCallback:function(){}
+			})
+		}
+
+	</script>
+</body>
+</html>
